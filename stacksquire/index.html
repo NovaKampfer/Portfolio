@@ -169,6 +169,7 @@ code{font:500 .86em var(--mono);padding:1px 6px;border-radius:6px;background:var
 .list.todo .ico{color:var(--amber)}
 .list small{color:var(--muted)}
 .sale .cta{justify-content:flex-start;margin-top:32px}
+.mail-alt{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:16px;color:var(--muted);font-size:14px}.mail-alt a:not(.btn){color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px}.mail-alt a:not(.btn):hover{color:var(--accent)}.btn.copied{border-color:var(--accent);color:var(--accent)}
 .fine{margin-top:20px;color:var(--dim);font-size:13.5px;max-width:90ch}
 @media (max-width:820px){.sale-top,.sale-cols{grid-template-columns:minmax(0,1fr)}.price{justify-self:start;text-align:left}}
 
@@ -473,6 +474,7 @@ dialog.lightbox .close{position:fixed;top:14px;right:14px;display:grid;place-ite
           <a class="btn solid" href="mailto:baerg.matthew@gmail.com?subject=StackSquire%20purchase%20inquiry"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>Email about buying</a>
           <a class="btn ghost" href="https://matthewbaerg.dev/#stacksquire">See it on my portfolio<svg class="ico" aria-hidden="true"><use href="#i-out"/></svg></a>
         </div>
+        <p class="mail-alt">Email app didn’t open? Write to <a href="mailto:baerg.matthew@gmail.com?subject=StackSquire%20purchase%20inquiry">baerg.matthew@gmail.com</a> <button class="btn ghost small" type="button" data-copy="baerg.matthew@gmail.com">Copy address</button> <a class="btn ghost small" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=baerg.matthew%40gmail.com&amp;su=StackSquire%20purchase%20inquiry" target="_blank" rel="noopener noreferrer">Open in Gmail<svg class="ico" aria-hidden="true"><use href="#i-out"/></svg></a></p>
         <p class="fine">Unpublished: no users, revenue or reviews yet. Built with an AI coding assistant. “StackSquire” is not a registered trademark. Figures are as of November 17, 2026; the full listing, with launch costs and transfer steps, is available on request.</p>
       </div>
     </div>
@@ -525,6 +527,19 @@ dialog.lightbox .close{position:fixed;top:14px;right:14px;display:grid;place-ite
 </dialog>
 
 <script>
+// Copy the email address, for visitors whose browser has no email app for mailto: links.
+(() => {
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const value = btn.dataset.copy;
+      try { await navigator.clipboard.writeText(value); }
+      catch (_) { const t = document.createElement('textarea'); t.value = value; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (__) {} t.remove(); }
+      const old = btn.textContent;
+      btn.textContent = 'Copied'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = old; btn.classList.remove('copied'); }, 1800);
+    });
+  });
+})();
 (() => {
   const dlg = document.getElementById('lightbox');
   if (!dlg || typeof dlg.showModal !== 'function') return;

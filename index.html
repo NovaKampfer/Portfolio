@@ -311,6 +311,9 @@ ul,ol{padding:0;list-style:none}
 .sale-list li::before{content:'✓';color:var(--accent)}
 .sale-cta{display:grid;gap:8px}
 .sale-cta .btn-sm{justify-content:center}
+.sale-alt{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding-top:16px;border-top:1px dashed var(--line-2);font:400 .78rem/1.5 var(--mono);color:var(--muted)}
+.sale-alt a:not(.btn-sm){color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+.sale-alt a:not(.btn-sm):hover{color:var(--accent)}
 
 /* stacksquire: spaced repetition demo */
 .fsrs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:22px;align-items:start}
@@ -778,6 +781,7 @@ ul,ol{padding:0;list-style:none}
           <a class="btn-sm solid" href="mailto:baerg.matthew@gmail.com?subject=StackSquire%20purchase%20inquiry">Email about buying <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <button class="btn-sm" type="button" data-gallery="stacksquire" data-index="0">See the screens</button>
         </div>
+        <p class="sale-alt">Email app didn’t open? Write to <a href="mailto:baerg.matthew@gmail.com?subject=StackSquire%20purchase%20inquiry">baerg.matthew@gmail.com</a><button class="btn-sm copy" type="button" data-copy="baerg.matthew@gmail.com"><svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg><span class="copy-label">Copy address</span></button><a class="btn-sm" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=baerg.matthew%40gmail.com&amp;su=StackSquire%20purchase%20inquiry" target="_blank" rel="noopener noreferrer">Open in Gmail <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
       <div class="lab reveal">
         <div class="lab-bar" role="tablist" aria-label="StackSquire lab">
